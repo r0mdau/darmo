@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var storage = require('./src/localstorage');
 
 app
     .set('view engine', 'jade')
