@@ -1,0 +1,28 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid{
+    height: 100%;
+}
+
+#messages{
+    border:1px solid red;
+    height:100%;
+}
+
+#users{
+    height: 75%;
+    border:1px solid yellow;
+}
+
+#logs{
+    height: 25%;
+    border: 1px solid;
+}

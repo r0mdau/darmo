@@ -3,26 +3,46 @@ html
     head(lang="fr")
     title darmo
     meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
     link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous")
-    script(src="https://code.jquery.com/jquery-2.1.4.min.js" crossorigin="anonymous")
-    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous")
+    link(href="public/css/darmo.css" rel="stylesheet")
     body
-        center pseudo
+        center Nickname&nbsp;
             input(type="text" id="nick")
-            script.
-                var nick;
-                $(document).ready(function(){
-                    nick = localStorage.getItem('nick') || 'unknown';
-                    if(nick != 'unknown'){
-                        $('center').hide();
+        div(class="container-fluid" style="display:none")
+            div(class="row" style="height:85%;")
+                div(class="col-md-10" id="messages")
+                div(class="col-md-2" style="height:100%")
+                    div(class="row" id="users")
+                    div(class="row" id="logs")
+            div(class="row" style="height:15%")
+                div(class="col-md-10")
+                    input(type="text" id="note")
+                div(class="col-md-2")
+                    button(class="btn btn-primary") Send
+
+
+        script(src="https://code.jquery.com/jquery-2.1.4.min.js" crossorigin="anonymous")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous")
+        script.
+            var nick;
+            $(document).ready(function(){
+                nick = localStorage.getItem('nick') || 'unknown';
+                if(nick != 'unknown'){
+                    switchNickSetup();
+                }
+
+                $('#nick').keydown(function (event) {
+                    nick = $(this).val();
+                    if (event.which == 13 && nick != '') {
+                        event.preventDefault();
+                        localStorage.setItem('nick', nick);
+                        switchNickSetup();
                     }
-                    
-                    $('#nick').keydown(function (event) {
-                        nick = $(this).val();
-                        if (event.which == 13 && nick != '') {
-                            event.preventDefault();
-                            localStorage.setItem('nick', nick);
-                            $('center').hide();
-                        }
-                    });
                 });
+            });
+
+            function switchNickSetup() {
+                $('center').hide();
+                $('div.container-fluid').show();
+            }
