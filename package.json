@@ -1,0 +1,23 @@
+{
+  "name": "darmo",
+  "version": "0.0.1",
+  "description": "It's just a text messaging",
+  "main": "darmo.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r0mdau/darmo.git"
+  },
+  "author": "Romain Dauby <romain.dauby@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/r0mdau/darmo/issues"
+  },
+  "homepage": "https://github.com/r0mdau/darmo#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "jade": "^1.11.0"
+  }
+}
